@@ -24,10 +24,11 @@ export function Marquee({
   // Duplicate the list so the loop is seamless
   const sequence = [...items, ...items];
   return (
-    <div className={cn("overflow-hidden relative", className)}>
+    <div className={cn("overflow-x-clip overflow-y-visible relative", className)}>
       <div
         className={cn(
-          "flex w-max items-center gap-10 whitespace-nowrap",
+          // py-8 leaves vertical room for tilted children to render fully
+          "flex w-max items-center gap-10 whitespace-nowrap py-8",
           fast ? "animate-marquee-fast" : "animate-marquee",
           reverse && "[animation-direction:reverse]",
         )}

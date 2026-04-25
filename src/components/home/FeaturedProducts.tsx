@@ -12,9 +12,9 @@ export async function FeaturedProducts() {
           <div>
             <p className="font-hand text-2xl text-coral mb-2">six patterns, one mission</p>
             <h2 className="font-display font-black text-5xl sm:text-6xl tracking-tighter leading-none">
-              Pick your{" "}
+              Find your{" "}
               <span className="relative inline-block">
-                <span className="italic text-forest">poison</span>
+                <span className="italic text-forest">fave</span>
                 <Underline
                   variant="scribble"
                   className="absolute -bottom-3 left-0 w-full text-honey-dark"

@@ -19,22 +19,27 @@ const TIMELINE = [
   {
     year: "2019",
     title: "One half-onion too many",
-    body: "Sage stares at a slice of onion wrapped in cling film for the fourth time that week. Decides this is no longer a life she will accept.",
+    body: "Nicole stares at a slice of red onion wrapped in cling film for the fourth time that week. Decides this is no longer a life she will accept.",
   },
   {
     year: "2020",
-    title: "First batch in the kitchen",
-    body: "Twelve wraps. Some too waxy, some not waxy enough. All gifted to friends. All used until they fell apart.",
+    title: "Started experimenting",
+    body: "A pot of beeswax on the kitchen stove. Twelve test wraps. Some too waxy, some not waxy enough. All gifted to family and friends — all used until they fell apart.",
   },
   {
     year: "2022",
-    title: "Moved into the barn",
-    body: "We stopped doing this on the kitchen counter. Sourced organic cotton from a mill in NC and beeswax from three apiaries within 50 miles.",
+    title: "Set up shop in the garage",
+    body: "Out of the kitchen and into the garage. Sourced organic cotton from a mill in NC, beeswax from three small apiaries near Bend, and started pressing in real small batches.",
   },
   {
     year: "2024",
-    title: "1,200 kitchens",
-    body: "We crossed 1,200 customers. Most of them tell us about it in postcards. We keep them all.",
+    title: "Farmers' & holiday markets",
+    body: "Outgrew the family-and-friends circle. Started doing farmers' markets and holiday popups around Central Oregon. Still small batch — just more batches.",
+  },
+  {
+    year: "2026",
+    title: "Shipping nationwide",
+    body: "Wraps now ship to kitchens all over the country. Still hand-pressed by Nicole, still in the garage, still in small batches. Just a lot more of them.",
   },
 ];
 
@@ -58,7 +63,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="mt-8 font-body text-xl text-ink/80 max-w-2xl mx-auto leading-relaxed">
-            That&apos;s really the whole story. The rest is just five years of figuring out how to make
+            That&apos;s really the whole story. The rest is just seven years of figuring out how to make
             wraps that don&apos;t crack, don&apos;t reek, and last longer than the produce they&apos;re wrapping.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3">
@@ -150,17 +155,17 @@ export default function AboutPage() {
           <header className="mb-16 max-w-2xl">
             <p className="font-hand text-2xl text-coral mb-2">how we got here</p>
             <h2 className="font-display font-black text-5xl sm:text-6xl tracking-tighter leading-[0.95]">
-              Five years, four <em className="text-forest">good</em> milestones,
+              Seven years, five <em className="text-forest">good</em> milestones,
               one ridiculous amount of beeswax.
             </h2>
           </header>
 
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {TIMELINE.map((item, i) => (
               <li
                 key={item.year}
                 className="bg-paper border-2 border-ink rounded-2xl p-6 shadow-[6px_6px_0_0_var(--ink)] relative"
-                style={{ transform: `rotate(${[-1.5, 1, -1, 1.5][i]}deg)` }}
+                style={{ transform: `rotate(${[-1.5, 1, -1, 1.5, -1][i]}deg)` }}
               >
                 <p className="font-hand text-3xl text-honey-dark">{item.year}</p>
                 <h3 className="font-display font-bold text-2xl mt-1 leading-tight">
@@ -178,17 +183,17 @@ export default function AboutPage() {
       {/* SIGNATURE */}
       <section className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-24 text-center">
         <Stamp
-          text="From the founders"
+          text="From the founder"
           size={140}
-          innerLabel={<span className="text-honey-dark text-xl font-display">Sage<br/>+ Pete</span>}
+          innerLabel={<span className="text-honey-dark text-xl font-display">Nicole</span>}
           className="mx-auto text-honey-dark mb-8"
         />
         <p className="font-display text-3xl sm:text-4xl leading-snug max-w-3xl mx-auto">
           &ldquo;If you&apos;re reading this — thank you. Every wrap that goes out
-          the door means a little less plastic in someone&apos;s drawer. That&apos;s
-          the whole point.&rdquo;
+          my garage door means a little less plastic in someone&apos;s drawer.
+          That&apos;s the whole point.&rdquo;
         </p>
-        <p className="mt-6 font-hand text-3xl text-coral">— Sage &amp; Pete</p>
+        <p className="mt-6 font-hand text-3xl text-coral">— Nicole</p>
 
         <div className="mt-16 flex justify-center">
           <Link

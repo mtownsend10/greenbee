@@ -56,14 +56,15 @@ export function Story() {
             </span>
           </h2>
           <p className="mt-6 font-body text-lg leading-relaxed text-ink/80 max-w-xl">
-            One day in 2019, our founder Sage stared at a slice of red onion
+            One day in 2019, our founder Nicole stared at a slice of red onion
             wrapped in its fourteenth piece of cling film and decided that was
             enough of <em>that</em>. A pot of beeswax, some old fabric scraps,
             and a hot iron later — Green Bee was a thing.
           </p>
           <p className="mt-4 font-body text-lg leading-relaxed text-ink/80 max-w-xl">
-            We still make every wrap by hand in small batches. Every batch
-            smells like a beehive in a citrus grove. We&apos;re weirdly into it.
+            Nicole still presses every wrap by hand out of her garage in Bend,
+            in small batches that smell like a beehive in a citrus grove.
+            We&apos;re weirdly into it.
           </p>
 
           <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 max-w-md">

@@ -52,14 +52,16 @@ export function Testimonials() {
   const items = REVIEWS.map((r, i) => (
     <article
       key={i}
-      className={`${TONES[i % TONES.length]} border-2 border-ink rounded-2xl p-6 shadow-[6px_6px_0_0_var(--ink)] w-[320px] sm:w-[380px] flex flex-col gap-4`}
+      className={`${TONES[i % TONES.length]} border-2 border-ink rounded-2xl p-6 shadow-[6px_6px_0_0_var(--ink)] w-[320px] sm:w-[380px] flex flex-col gap-4 whitespace-normal`}
       style={{ transform: `rotate(${TILTS[i % TILTS.length]}deg)` }}
     >
       <div className="flex items-center justify-between">
         <span className="text-honey-dark text-xl">★★★★★</span>
         <span className="font-hand text-honey-dark text-lg">{r.pattern}</span>
       </div>
-      <p className="font-display text-xl leading-snug">&ldquo;{r.quote}&rdquo;</p>
+      <p className="font-display text-xl leading-snug break-words">
+        &ldquo;{r.quote}&rdquo;
+      </p>
       <p className="mt-auto font-body text-sm text-ink/70">
         — <span className="font-semibold">{r.name}</span>, {r.city}
       </p>
@@ -75,7 +77,7 @@ export function Testimonials() {
         </h2>
       </header>
 
-      <div className="py-6">
+      <div className="py-4">
         <Marquee
           items={items}
           itemClassName="px-3"
