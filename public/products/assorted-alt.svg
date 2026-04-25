@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Assorted wraps in use">
+  <rect width="600" height="600" fill="#F3EAD0"/>
+  <!-- Bowl -->
+  <ellipse cx="300" cy="380" rx="200" ry="40" fill="#1A1A1A" opacity="0.12"/>
+  <path d="M120 380 Q 300 460 480 380 L 460 280 Q 300 320 140 280 Z" fill="#FFFAEB" stroke="#1A1A1A" stroke-width="3"/>
+  <!-- Wrap covering bowl -->
+  <path d="M120 280 Q 300 200 480 280 Q 460 320 300 320 Q 140 320 120 280 Z" fill="#FCD66B" stroke="#1A1A1A" stroke-width="3"/>
+  <!-- Tied top -->
+  <path d="M280 200 Q 300 180 320 200 L 310 230 Q 300 220 290 230 Z" fill="#5B8A3A" stroke="#1A1A1A" stroke-width="2"/>
+  <!-- Decorative bee -->
+  <g transform="translate(420,140) rotate(20)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="#F4B324" stroke="#1A1A1A" stroke-width="2"/>
+    <path d="M-8 -10 Q -8 10 -8 12 M 4 -12 Q 4 10 4 12" stroke="#1A1A1A" stroke-width="2"/>
+    <circle cx="22" cy="-2" r="6" fill="#1A1A1A"/>
+  </g>
+</svg>

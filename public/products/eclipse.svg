@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Eclipse beeswax wrap">
+  <rect width="600" height="600" fill="#FFFAEB"/>
+  <g transform="translate(160,160) rotate(-10)">
+    <rect width="300" height="300" rx="14" fill="#1A1A1A"/>
+    <g fill="#F4B324">
+      <circle cx="80" cy="80" r="44"/>
+      <circle cx="80" cy="80" r="30" fill="#1A1A1A"/>
+      <circle cx="220" cy="120" r="20"/>
+      <circle cx="100" cy="220" r="28"/>
+      <circle cx="100" cy="220" r="18" fill="#1A1A1A"/>
+      <circle cx="240" cy="240" r="36"/>
+      <circle cx="240" cy="240" r="24" fill="#1A1A1A"/>
+    </g>
+    <g stroke="#FCD66B" stroke-width="1.5" fill="none" opacity="0.6">
+      <circle cx="80" cy="80" r="60"/>
+      <circle cx="220" cy="120" r="36"/>
+      <circle cx="100" cy="220" r="46"/>
+      <circle cx="240" cy="240" r="52"/>
+    </g>
+    <rect width="300" height="300" rx="14" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="6 8"/>
+  </g>
+  <g transform="translate(220,240) rotate(8)">
+    <rect width="280" height="280" rx="14" fill="#1A1A1A" opacity="0.85"/>
+    <g fill="#FCD66B">
+      <circle cx="140" cy="140" r="80"/>
+      <circle cx="140" cy="140" r="60" fill="#1A1A1A"/>
+    </g>
+    <rect width="280" height="280" rx="14" fill="none" stroke="#FCD66B" stroke-width="2" stroke-dasharray="4 6"/>
+  </g>
+</svg>

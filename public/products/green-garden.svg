@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Green Garden beeswax wrap">
+  <defs>
+    <pattern id="gg-leaf" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M40 10 Q 60 30 40 50 Q 20 30 40 10 Z" fill="#5B8A3A"/>
+      <path d="M40 14 Q 40 30 40 46" stroke="#2F4A2F" stroke-width="1.5" fill="none"/>
+      <circle cx="14" cy="60" r="3" fill="#F4B324"/>
+      <circle cx="66" cy="14" r="2" fill="#F4B324"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="#FFFAEB"/>
+  <g transform="translate(150,170) rotate(-8)">
+    <rect width="300" height="300" rx="14" fill="#2F4A2F"/>
+    <rect width="300" height="300" rx="14" fill="url(#gg-leaf)" opacity="0.85"/>
+    <rect width="300" height="300" rx="14" fill="none" stroke="#FCD66B" stroke-width="3" stroke-dasharray="6 8"/>
+  </g>
+  <g transform="translate(220,240) rotate(6)">
+    <rect width="280" height="280" rx="14" fill="#5B8A3A"/>
+    <rect width="280" height="280" rx="14" fill="url(#gg-leaf)" opacity="0.6"/>
+    <!-- tucked-away bee -->
+    <g transform="translate(190,200) rotate(15)">
+      <ellipse cx="0" cy="0" rx="14" ry="9" fill="#F4B324" stroke="#1A1A1A" stroke-width="2"/>
+      <path d="M-4 -8 L -4 8 M 4 -8 L 4 8" stroke="#1A1A1A" stroke-width="2"/>
+      <circle cx="14" cy="-2" r="4" fill="#1A1A1A"/>
+    </g>
+    <rect width="280" height="280" rx="14" fill="none" stroke="#FFFAEB" stroke-width="3" stroke-dasharray="6 8"/>
+  </g>
+</svg>

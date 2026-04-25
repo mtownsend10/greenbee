@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Green Geo beeswax wrap">
+  <defs>
+    <pattern id="ge-geo" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="#5B8A3A"/>
+      <path d="M0 30 L 30 0 L 60 30 L 30 60 Z" fill="none" stroke="#FFFAEB" stroke-width="2"/>
+      <circle cx="30" cy="30" r="3" fill="#FCD66B"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="#FFFAEB"/>
+  <g transform="translate(150,160) rotate(-7)">
+    <rect width="300" height="300" rx="14" fill="url(#ge-geo)"/>
+    <rect width="300" height="300" rx="14" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="6 8"/>
+  </g>
+  <g transform="translate(225,235) rotate(9)">
+    <rect width="270" height="270" rx="14" fill="#FFFAEB"/>
+    <g stroke="#5B8A3A" stroke-width="2" fill="none">
+      <path d="M0 135 L 135 0 L 270 135 L 135 270 Z"/>
+      <path d="M68 135 L 135 68 L 202 135 L 135 202 Z" fill="#5B8A3A" fill-opacity="0.3"/>
+    </g>
+    <circle cx="135" cy="135" r="14" fill="#F4B324"/>
+    <rect width="270" height="270" rx="14" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="6 8"/>
+  </g>
+</svg>

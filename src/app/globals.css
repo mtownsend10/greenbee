@@ -1,26 +1,225 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Green Bee Wraps — Design Tokens
+   "Editorial farmer's market" — playful, illustrated, warm
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --cream: #faf4e1;
+  --cream-deep: #f3ead0;
+  --paper: #fffaeb;
+  --ink: #1a1a1a;
+
+  /* Brand */
+  --honey: #f4b324;
+  --honey-dark: #d99410;
+  --honey-light: #fcd66b;
+  --forest: #2f4a2f;
+  --forest-deep: #1f2f1f;
+  --leaf: #5b8a3a;
+  --coral: #ff6b5b;
+  --rose: #f8c9b8;
+  --sky: #b9dbe5;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-honey: var(--honey);
+  --color-honey-dark: var(--honey-dark);
+  --color-honey-light: var(--honey-light);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-leaf: var(--leaf);
+  --color-coral: var(--coral);
+  --color-rose: var(--rose);
+  --color-sky: var(--sky);
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-body: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), "Comic Sans MS", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "ss02";
+    /* Subtle paper grain */
+    background-image:
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(244, 179, 36, 0.08),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 80% 90%,
+        rgba(91, 138, 58, 0.06),
+        transparent 50%
+      );
+  }
+
+  ::selection {
+    background: var(--honey);
+    color: var(--forest-deep);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-feature-settings: "ss01";
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Utility classes
+   ============================================================ */
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-hand {
+    font-family: var(--font-hand);
+  }
+
+  /* Filmgrain overlay */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Hand-drawn wobble border */
+  .border-wobble {
+    border-radius: 64% 36% 58% 42% / 50% 60% 40% 50%;
+  }
+  .border-wobble-2 {
+    border-radius: 38% 62% 47% 53% / 60% 38% 62% 40%;
+  }
+
+  /* Sticker tilt helpers */
+  .tilt-l {
+    transform: rotate(-3deg);
+  }
+  .tilt-l-lg {
+    transform: rotate(-6deg);
+  }
+  .tilt-r {
+    transform: rotate(3deg);
+  }
+  .tilt-r-lg {
+    transform: rotate(6deg);
+  }
+
+  /* Honey paint underline (handled per-element via SVG) */
+  .underline-wobble {
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 Q 50 1 100 6 T 198 4' stroke='%23F4B324' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100% 0.5em;
+    padding-bottom: 0.25em;
+  }
+
+  /* Marquee */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  .animate-marquee-fast {
+    animation: marquee 18s linear infinite;
+  }
+
+  /* Bee buzz (subtle hover wiggle) */
+  @keyframes buzz {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-4deg);
+    }
+    25% {
+      transform: translate(2px, -2px) rotate(-1deg);
+    }
+    50% {
+      transform: translate(-1px, 2px) rotate(-6deg);
+    }
+    75% {
+      transform: translate(1px, -1px) rotate(-3deg);
+    }
+  }
+  .animate-buzz {
+    animation: buzz 1.2s ease-in-out infinite;
+  }
+
+  /* Slow float */
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0) rotate(var(--r, 0deg));
+    }
+    50% {
+      transform: translateY(-10px) rotate(var(--r, 0deg));
+    }
+  }
+  .animate-float {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  /* Spin gentle (for stamp) */
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 22s linear infinite;
+  }
+
+  /* Hex pattern background */
+  .bg-honeycomb {
+    background-color: var(--cream);
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 100'%3E%3Cpath d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z M28 33 L56 50 L56 84 L28 100 L0 84 L0 50 Z' fill='none' stroke='%23F4B324' stroke-opacity='0.18' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 56px 100px;
+  }
+
+  /* Dotted background */
+  .bg-dots {
+    background-image: radial-gradient(
+      circle,
+      rgba(47, 74, 47, 0.18) 1px,
+      transparent 1.5px
+    );
+    background-size: 16px 16px;
+  }
 }
