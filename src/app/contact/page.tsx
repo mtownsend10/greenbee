@@ -43,7 +43,7 @@ export default function ContactPage() {
                 Workshop
               </dt>
               <dd className="font-display text-2xl mt-1">
-                A little red barn outside Bend, OR
+                A two-car garage in Bend, OR
               </dd>
             </div>
             <div>
