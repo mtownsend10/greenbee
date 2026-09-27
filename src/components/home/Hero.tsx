@@ -110,7 +110,7 @@ export function Hero() {
             rotate={8}
             className="absolute top-2 right-0 sm:right-4 text-base !px-5 !py-2.5"
           >
-            $6–$22
+            Reusable for years
           </StickerBadge>
 
           {/* Leaf sprig */}
