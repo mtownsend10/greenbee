@@ -13,14 +13,14 @@ const REVIEWS: Testimonial[] = [
       "I bought one. Then four. Then I made my mother-in-law buy two. The cling film drawer is officially decommissioned.",
     name: "Mara K.",
     city: "Portland, OR",
-    pattern: "Garden",
+    pattern: "Light Garden",
   },
   {
     quote:
-      "These have lasted nine months and they still smell faintly of honey when I pull them out. Witchcraft. Good witchcraft.",
+      "Going on three years with my first set. A rinse in cool water after each use and they still cling like the day they arrived.",
     name: "Daniel R.",
     city: "Brooklyn, NY",
-    pattern: "Eclipse",
+    pattern: "Rainbow",
   },
   {
     quote:
@@ -31,14 +31,14 @@ const REVIEWS: Testimonial[] = [
   },
   {
     quote:
-      "Look — I am not a crunchy person. But I am a person who hates throwing things away, and these have stopped that.",
+      "Our sourdough stays soft for days now, and the cheese drawer is no longer a science experiment. Should have switched years ago.",
     name: "Jules T.",
     city: "Chicago, IL",
     pattern: "Green Geo",
   },
   {
     quote:
-      "Got the Green Garden as a gift. Cried a little. Wrapped a sandwich in it. Cried less.",
+      "Gave a set to every teacher at the end of the year. Three of them have already asked where to buy more.",
     name: "Aisha B.",
     city: "Boulder, CO",
     pattern: "Green Garden",

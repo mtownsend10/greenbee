@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bee } from "@/components/illustrations/Bee";
 import { Underline } from "@/components/illustrations/Underline";
 import { ContactForm } from "@/components/site/ContactForm";
+import { CONTACT_EMAIL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -34,8 +35,13 @@ export default function ContactPage() {
               <dt className="font-display font-bold uppercase tracking-widest text-sm text-ink/60">
                 Email
               </dt>
-              <dd className="font-display text-2xl mt-1">
-                hello@greenbeewraps.com
+              <dd className="font-display text-2xl mt-1 break-all">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="underline underline-offset-4 decoration-honey decoration-4 hover:text-forest"
+                >
+                  {CONTACT_EMAIL}
+                </a>
               </dd>
             </div>
             <div>
@@ -51,7 +57,7 @@ export default function ContactPage() {
                 Hours
               </dt>
               <dd className="font-body text-lg mt-1 text-ink/80">
-                Mon–Fri, 9–4 ET. We&apos;re slow on weekends because we&apos;re
+                Mon–Fri, 9–4 Pacific (Bend, OR time). We&apos;re slow on weekends because we&apos;re
                 outside.
               </dd>
             </div>

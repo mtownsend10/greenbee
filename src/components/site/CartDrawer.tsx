@@ -17,7 +17,9 @@ export function CartDrawer() {
     currencyCode,
     updateQuantity,
     removeItem,
-    checkoutUrl,
+    checkout,
+    checkingOut,
+    checkoutError,
   } = useCart();
 
   return (
@@ -99,9 +101,11 @@ export function CartDrawer() {
                     >
                       {line.productTitle}
                     </Link>
-                    <p className="font-body text-xs text-ink/60 mt-0.5">
-                      {line.variantTitle}
-                    </p>
+                    {line.variantTitle !== "Default Title" && (
+                      <p className="font-body text-xs text-ink/60 mt-0.5">
+                        {line.variantTitle}
+                      </p>
+                    )}
                     <div className="mt-2 flex items-center justify-between gap-3">
                       <div className="inline-flex items-center border-2 border-ink rounded-full overflow-hidden">
                         <button
@@ -158,12 +162,19 @@ export function CartDrawer() {
               Shipping &amp; taxes calculated at checkout. Plastic-free packaging
               always.
             </p>
-            <a
-              href={checkoutUrl}
-              className="block w-full text-center px-6 py-4 bg-forest text-cream rounded-full font-display font-semibold text-lg border-2 border-ink shadow-[4px_4px_0_0_var(--ink)] hover:shadow-[2px_2px_0_0_var(--ink)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+            <button
+              type="button"
+              onClick={checkout}
+              disabled={checkingOut}
+              className="block w-full text-center px-6 py-4 bg-forest text-cream rounded-full font-display font-semibold text-lg border-2 border-ink shadow-[4px_4px_0_0_var(--ink)] hover:shadow-[2px_2px_0_0_var(--ink)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all disabled:opacity-60 disabled:pointer-events-none"
             >
-              Checkout via Shopify →
-            </a>
+              {checkingOut ? "Heading to checkout…" : "Checkout via Shopify →"}
+            </button>
+            {checkoutError && (
+              <p role="alert" className="mt-3 text-sm font-body text-coral text-center">
+                {checkoutError}
+              </p>
+            )}
           </footer>
         )}
       </aside>

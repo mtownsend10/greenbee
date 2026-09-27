@@ -16,8 +16,11 @@ const TILTS = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "-rotate-3", "r
 
 export function ProductCard({ product, index = 0, className }: Props) {
   const tilt = TILTS[index % TILTS.length];
-  const price = product.priceRange.minVariantPrice;
-  const compare = product.compareAtPriceRange?.minVariantPrice;
+  // Lead with the 3-pack (first variant); singles are mentioned below the title.
+  const price = product.variants[0].price;
+  const compare = product.variants[0].compareAtPrice;
+  const minPrice = product.priceRange.minVariantPrice;
+  const hasSingles = product.variants.length > 1;
   const tagBadge = product.tags?.[0];
 
   return (
@@ -61,6 +64,7 @@ export function ProductCard({ product, index = 0, className }: Props) {
             </p>
             <p className="font-body text-xs text-ink/60 mt-1">
               3-pack · S / M / L
+              {hasSingles && ` · singles from ${formatPrice(minPrice.amount, minPrice.currencyCode)}`}
             </p>
           </div>
           <div className="text-right">

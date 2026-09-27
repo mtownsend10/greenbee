@@ -4,9 +4,9 @@ const PHRASES = [
   "100% organic cotton",
   "Real beeswax + damar resin",
   "Jojoba & coconut oils",
-  "Reusable for 12+ months",
+  "Reusable for years",
   "Compostable to the core",
-  "Plastic-free shipping",
+  "Breathable, natural seal",
   "Hand-pressed in Bend, Oregon",
 ];
 

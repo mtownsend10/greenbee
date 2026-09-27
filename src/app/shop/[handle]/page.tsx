@@ -9,7 +9,6 @@ import { ProductGallery } from "@/components/product/ProductGallery";
 import { StickerBadge } from "@/components/ui/StickerBadge";
 import { JsonLd, productSchema } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/seo";
-import { formatPrice } from "@/lib/utils";
 
 type Params = Promise<{ handle: string }>;
 
@@ -57,8 +56,6 @@ export default async function ProductPage({ params }: { params: Params }) {
   const all = await getAllProducts();
   const others = all.filter((p) => p.handle !== handle).slice(0, 3);
 
-  const price = product.priceRange.minVariantPrice;
-  const compare = product.compareAtPriceRange?.minVariantPrice;
 
   return (
     <article className="relative">
@@ -98,28 +95,22 @@ export default async function ProductPage({ params }: { params: Params }) {
               {product.title}
             </h1>
 
-            <div className="mt-5 flex items-baseline gap-4">
-              <span className="font-display font-black text-4xl tabular-nums">
-                {formatPrice(price.amount, price.currencyCode)}
-              </span>
-              {compare && parseFloat(compare.amount) > parseFloat(price.amount) && (
-                <span className="font-body text-lg text-ink/50 line-through tabular-nums">
-                  {formatPrice(compare.amount, compare.currencyCode)}
-                </span>
-              )}
-              <span className="font-hand text-xl text-honey-dark">
-                3-pack · S/M/L
-              </span>
-            </div>
-
-            <p className="mt-6 font-body text-lg leading-relaxed text-ink/80">
-              {product.description}
-            </p>
+            {product.descriptionHtml ? (
+              <div
+                className="mt-6 font-body text-lg leading-relaxed text-ink/80 space-y-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li_p]:m-0 [&_strong]:font-semibold [&_strong]:text-ink"
+                // Merchant-authored copy from our own Shopify admin, cleaned in client.ts.
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
+            ) : (
+              <p className="mt-6 font-body text-lg leading-relaxed text-ink/80">
+                {product.description}
+              </p>
+            )}
 
             <div className="mt-8">
               <AddToCart product={product} />
               <p className="font-body text-xs text-ink/55 mt-3 text-center sm:text-left">
-                Free shipping on orders $30+ · Checkout securely via Shopify
+                Ships anywhere in the US · Checkout securely via Shopify
               </p>
             </div>
 

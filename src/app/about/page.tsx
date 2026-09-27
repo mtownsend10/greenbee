@@ -12,34 +12,34 @@ import { StickerBadge } from "@/components/ui/StickerBadge";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "Hand-pressed beeswax wraps from a small kitchen in Bend, Oregon. Here's how we got here.",
+    "Hand-pressed beeswax wraps from Bend, Oregon, made by someone with years of wrap-making behind her.",
 };
 
-const TIMELINE = [
+const LESSONS = [
   {
-    year: "2019",
-    title: "One half-onion too many",
-    body: "Nicole stares at a slice of red onion wrapped in cling film for the fourth time that week. Decides this is no longer a life she will accept.",
+    label: "lesson 01",
+    title: "The cotton matters",
+    body: "Tightly woven organic cotton takes the wax evenly and holds it. Cheap fabric flakes, cracks, and gives up early.",
   },
   {
-    year: "2020",
-    title: "Started experimenting",
-    body: "A pot of beeswax on the kitchen stove. Twelve test wraps. Some too waxy, some not waxy enough. All gifted to family and friends — all used until they fell apart.",
+    label: "lesson 02",
+    title: "It's all in the blend",
+    body: "Too much wax and it cracks. Too little resin and it won't cling. Getting the balance right is most of the craft.",
   },
   {
-    year: "2022",
-    title: "Set up shop in the garage",
-    body: "Out of the kitchen and into the garage. Sourced organic cotton from a mill in NC, beeswax from three small apiaries near Bend, and started pressing in real small batches.",
+    label: "lesson 03",
+    title: "Care is everything",
+    body: "Cool water, mild soap, no heat. Treat a wrap that way and it'll keep working for years.",
   },
   {
-    year: "2024",
-    title: "Farmers' & holiday markets",
-    body: "Outgrew the family-and-friends circle. Started doing farmers' markets and holiday popups around Central Oregon. Still small batch — just more batches.",
+    label: "lesson 04",
+    title: "Small batches win",
+    body: "Pressing by hand means every single wrap gets looked at before it leaves the garage. No shortcuts.",
   },
   {
-    year: "2026",
-    title: "Shipping nationwide",
-    body: "Wraps now ship to kitchens all over the country. Still hand-pressed by Nicole, still in the garage, still in small batches. Just a lot more of them.",
+    label: "lesson 05",
+    title: "Every wrap counts",
+    body: "One good wrap quietly replaces roll after roll of cling film. Multiply that by a kitchen, then a neighborhood.",
   },
 ];
 
@@ -56,18 +56,19 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-20 text-center">
           <p className="font-hand text-2xl text-coral mb-4">made by hand · made on purpose</p>
           <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.92] max-w-4xl mx-auto">
-            We started this because of{" "}
+            Less plastic,{" "}
             <span className="relative inline-block">
-              <span className="italic text-forest">one onion.</span>
-              <Underline variant="double" className="absolute -bottom-3 left-0 w-full text-honey" />
+              <span className="italic text-forest">one wrap at a time.</span>
+              <Underline variant="swoop" className="absolute top-full mt-3 left-0 w-full text-honey" />
             </span>
           </h1>
-          <p className="mt-8 font-body text-xl text-ink/80 max-w-2xl mx-auto leading-relaxed">
-            That&apos;s really the whole story. The rest is just seven years of figuring out how to make
-            wraps that don&apos;t crack, don&apos;t reek, and last longer than the produce they&apos;re wrapping.
+          <p className="mt-14 font-body text-xl text-ink/80 max-w-2xl mx-auto leading-relaxed">
+            Nicole has spent the better part of a decade making beeswax wraps and watching them
+            work — keeping food fresh, lasting for years, and quietly replacing roll after roll of
+            cling film. Green Bee is everything she&apos;s learned, pressed by hand in Bend, Oregon.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3">
-            <StickerBadge tone="honey" rotate={-4}>1,200+ kitchens</StickerBadge>
+            <StickerBadge tone="honey" rotate={-4}>10 years of wrap-making</StickerBadge>
             <StickerBadge tone="forest" rotate={3}>Made in Bend, OR</StickerBadge>
             <StickerBadge tone="coral" rotate={-2}>0% plastic, ever</StickerBadge>
           </div>
@@ -108,7 +109,7 @@ export default function AboutPage() {
                 },
                 {
                   title: "Real beeswax",
-                  body: "From three small apiaries within 50 miles of Bend. We pay above market because the bees deserve it.",
+                  body: "Domestic, all-natural beeswax — nothing synthetic, nothing blended in. It's what gives every wrap its gentle grip and faint honey smell.",
                   color: "bg-honey-light",
                 },
                 {
@@ -153,21 +154,21 @@ export default function AboutPage() {
       <section className="bg-cream-deep border-y-2 border-ink py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <header className="mb-16 max-w-2xl">
-            <p className="font-hand text-2xl text-coral mb-2">how we got here</p>
+            <p className="font-hand text-2xl text-coral mb-2">what the years taught us</p>
             <h2 className="font-display font-black text-5xl sm:text-6xl tracking-tighter leading-[0.95]">
-              Seven years, five <em className="text-forest">good</em> milestones,
+              Five <em className="text-forest">hard-won</em> lessons,
               one ridiculous amount of beeswax.
             </h2>
           </header>
 
           <ol className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {TIMELINE.map((item, i) => (
+            {LESSONS.map((item, i) => (
               <li
-                key={item.year}
+                key={item.label}
                 className="bg-paper border-2 border-ink rounded-2xl p-6 shadow-[6px_6px_0_0_var(--ink)] relative"
                 style={{ transform: `rotate(${[-1.5, 1, -1, 1.5, -1][i]}deg)` }}
               >
-                <p className="font-hand text-3xl text-honey-dark">{item.year}</p>
+                <p className="font-hand text-3xl text-honey-dark">{item.label}</p>
                 <h3 className="font-display font-bold text-2xl mt-1 leading-tight">
                   {item.title}
                 </h3>

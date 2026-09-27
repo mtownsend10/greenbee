@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const FAQS: { q: string; a: string }[] = [
   {
     q: "How long do they actually last?",
-    a: "Twelve months of regular use, give or take. We've had customers run their first set 16+ months — the cling fades a little, but they keep working. When yours feels too tired, snip it up and toss it in the compost.",
+    a: "Years, with a little care. Wash in cool water, keep them away from heat, and they'll keep working long after you've forgotten when you bought them. When yours finally feels too tired, snip it up and toss it in the compost.",
   },
   {
     q: "Can I wrap raw meat with them?",
@@ -28,7 +28,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What's in the wax blend?",
-    a: "Beeswax (from three small apiaries near our Bend workshop), damar resin (for the cling), and jojoba + coconut oils (for flexibility and softness). All on top of 100% organic cotton. That's it.",
+    a: "Domestic, all-natural beeswax, damar resin (for the cling), and jojoba + coconut oils (for flexibility and softness). All on top of 100% organic cotton. That's it.",
   },
   {
     q: "Do they smell?",
@@ -36,11 +36,11 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Where do you ship?",
-    a: "Anywhere in the US. International shipping is on the roadmap for late 2026. Free shipping on orders $30+.",
+    a: "Anywhere in the US. Orders ship within 5–7 business days, and orders of $50 or more ship free. The full details are on our Shipping & Returns page.",
   },
   {
     q: "What if I don't love them?",
-    a: "Reach out within 30 days and we'll make it right — refund, replacement, whatever feels fair. We've never had to argue about it.",
+    a: "Reach out within 30 days of delivery and we'll make it right. Unused wraps can be returned for a full refund, and if a wrap is defective we'll replace it. The details are on our Shipping & Returns page.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function FaqPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-16 text-center relative">
           <p className="font-hand text-2xl text-coral mb-3">honest answers, no fluff</p>
           <h1 className="font-display font-black text-6xl sm:text-7xl tracking-tighter leading-[0.92]">
-            Things you've{" "}
+            Things you&apos;ve{" "}
             <span className="relative inline-block">
               <span className="italic text-forest">already wondered</span>
               <Underline variant="swoop" className="absolute -bottom-3 left-0 w-full text-honey" />

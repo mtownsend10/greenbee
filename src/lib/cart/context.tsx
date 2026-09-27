@@ -33,7 +33,8 @@ type Action =
   | { type: "clear" }
   | { type: "hydrate"; state: CartState };
 
-const STORAGE_KEY = "gbw.cart.v1";
+// v2: variant IDs are now real Shopify IDs, so carts saved with mock IDs are dropped.
+const STORAGE_KEY = "gbw.cart.v2";
 
 function reducer(state: CartState, action: Action): CartState {
   switch (action.type) {
@@ -111,10 +112,12 @@ type CartContextValue = {
   removeItem: (variantId: string) => void;
   clear: () => void;
   /**
-   * In production this returns Shopify's hosted checkout URL (cart.checkoutUrl).
-   * For the mock layer we surface a placeholder so the UI flow is testable.
+   * Creates a Shopify cart from the basket and redirects to its hosted checkout
+   * (cart.checkoutUrl). In mock mode this goes to a placeholder.
    */
-  checkoutUrl: string;
+  checkout: () => Promise<void>;
+  checkingOut: boolean;
+  checkoutError: string | null;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -123,6 +126,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, { lines: [] });
   const [isOpen, setIsOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   // Load
   useEffect(() => {
@@ -187,6 +192,26 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clear = useCallback(() => dispatch({ type: "clear" }), []);
 
+  const checkout = useCallback(async () => {
+    setCheckingOut(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lines: state.lines.map((l) => ({ variantId: l.variantId, quantity: l.quantity })),
+        }),
+      });
+      const data = (await res.json()) as { checkoutUrl?: string; error?: string };
+      if (!res.ok || !data.checkoutUrl) throw new Error(data.error);
+      window.location.assign(data.checkoutUrl);
+    } catch {
+      setCheckoutError("Sorry, we couldn't start checkout. Please try again in a moment.");
+      setCheckingOut(false);
+    }
+  }, [state.lines]);
+
   const value: CartContextValue = {
     lines: state.lines,
     totalQuantity,
@@ -200,7 +225,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     updateQuantity,
     removeItem,
     clear,
-    checkoutUrl: "/checkout-placeholder",
+    checkout,
+    checkingOut,
+    checkoutError,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

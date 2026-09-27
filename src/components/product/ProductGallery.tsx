@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Stamp } from "@/components/illustrations/Stamp";
 import { LeafSprig } from "@/components/illustrations/LeafSprig";
 import type { Image as ProductImage } from "@/lib/shopify/types";
 
@@ -38,20 +37,6 @@ export function ProductGallery({ title, images, patternColor }: Props) {
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover animate-[fadeIn_300ms_ease-out]"
         />
-        <div className="absolute -top-3 -left-3 rotate-[-8deg] pointer-events-none">
-          <Stamp
-            text="Hand pressed"
-            size={120}
-            innerLabel={
-              <span className="text-forest font-display text-xl">
-                Bee
-                <br />
-                Made
-              </span>
-            }
-            className="text-forest"
-          />
-        </div>
         <LeafSprig className="absolute bottom-4 right-4 w-16 pointer-events-none" />
       </div>
 

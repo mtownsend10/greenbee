@@ -7,6 +7,7 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Green Bee Wraps";
+export const CONTACT_EMAIL = "greenbeebend@gmail.com";
 export const SITE_TAGLINE = "Keep food fresh, naturally.";
 export const SITE_DESCRIPTION =
   "Handmade beeswax food wraps from Bend, Oregon. 100% organic cotton infused with beeswax, damar resin, jojoba and coconut oils. Wrap. Wash. Reuse.";

@@ -24,7 +24,7 @@ export function Header() {
       <div className="bg-forest text-cream border-b-2 border-ink">
         <div className="mx-auto max-w-7xl px-4 py-2 text-center text-[11px] sm:text-xs font-body tracking-wider uppercase flex items-center justify-center gap-2">
           <span className="inline-block size-1.5 rounded-full bg-honey animate-pulse" />
-          Free shipping on orders $30+ · Plastic-free, always
+          Ships anywhere in the US · Plastic-free, always
         </div>
       </div>
 

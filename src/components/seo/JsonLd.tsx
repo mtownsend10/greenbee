@@ -48,7 +48,7 @@ export function websiteSchema() {
 export function productSchema(product: Product) {
   const url = `${SITE_URL}/shop/${product.handle}`;
   const images = product.images.map((i) => `${SITE_URL}${i.url}`);
-  const price = product.priceRange.minVariantPrice;
+  const { minVariantPrice, maxVariantPrice } = product.priceRange;
 
   return {
     "@context": "https://schema.org",
@@ -64,19 +64,16 @@ export function productSchema(product: Product) {
     },
     category: product.productType,
     offers: {
-      "@type": "Offer",
+      "@type": "AggregateOffer",
       url,
-      priceCurrency: price.currencyCode,
-      price: price.amount,
+      priceCurrency: minVariantPrice.currencyCode,
+      lowPrice: minVariantPrice.amount,
+      highPrice: maxVariantPrice.amount,
+      offerCount: product.variants.length,
       availability: product.availableForSale
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
       itemCondition: "https://schema.org/NewCondition",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "1200",
     },
   };
 }

@@ -20,10 +20,10 @@ export function CtaBanner() {
               your move, cling film
             </p>
             <h2 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl tracking-tighter leading-[0.95]">
-              Trade three sheets of <em className="text-honey">honey-soaked cotton</em> for a year of plastic.
+              Three sheets of <em className="text-honey">honey-soaked cotton.</em> Years without plastic wrap.
             </h2>
             <p className="mt-6 font-body text-lg text-cream/80 max-w-xl">
-              Free shipping on orders $30+ · 30-day happiness guarantee · Compostable
+              Ships anywhere in the US · 30-day happiness guarantee · Compostable
               packaging from the box to the wrap.
             </p>
           </div>

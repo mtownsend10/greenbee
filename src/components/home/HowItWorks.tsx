@@ -35,7 +35,7 @@ const STEPS = [
     n: "03",
     title: "Reuse",
     body:
-      "Hang to dry, fold for next time. Each wrap lasts 12+ months. When it's done, snip it up and toss it in the compost.",
+      "Hang to dry, fold for next time. With a little care, each wrap keeps going for years. When it's finally done, snip it up and toss it in the compost.",
     accent: "bg-leaf",
     icon: (
       <svg viewBox="0 0 100 100" className="size-16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">

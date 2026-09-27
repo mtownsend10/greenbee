@@ -43,7 +43,7 @@ export function Logo({
             tone === "dark" ? "text-honey-light" : "text-ink/70",
           )}
         >
-          Wraps&nbsp;Co.
+          Wraps
         </span>
       </span>
     </Link>
@@ -53,12 +53,20 @@ export function Logo({
 function BeeMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden>
-      <circle cx="24" cy="24" r="22" fill="#F4B324" stroke="#1A1A1A" strokeWidth="2" />
-      <path d="M14 18 Q 24 26 34 18" stroke="#1A1A1A" strokeWidth="2" fill="none" />
-      <path d="M12 26 Q 24 34 36 26" stroke="#1A1A1A" strokeWidth="2" fill="none" />
-      <path d="M14 32 Q 24 38 34 32" stroke="#1A1A1A" strokeWidth="2" fill="none" />
-      <ellipse cx="16" cy="14" rx="6" ry="4" fill="#FFFAEB" stroke="#1A1A1A" strokeWidth="1.5" transform="rotate(-30 16 14)" />
-      <ellipse cx="32" cy="14" rx="6" ry="4" fill="#FFFAEB" stroke="#1A1A1A" strokeWidth="1.5" transform="rotate(30 32 14)" />
+      {/* Honeycomb cell */}
+      <path d="M24 2 L43 13 L43 35 L24 46 L5 35 L5 13 Z" fill="#2F4A2F" stroke="#1A1A1A" strokeWidth="2" strokeLinejoin="round" />
+      {/* Wings */}
+      <ellipse cx="20" cy="17" rx="4.5" ry="7" fill="#FFFAEB" stroke="#1A1A1A" strokeWidth="1.5" transform="rotate(-25 20 17)" />
+      <ellipse cx="27" cy="16.5" rx="4.5" ry="7" fill="#FFFAEB" stroke="#1A1A1A" strokeWidth="1.5" transform="rotate(20 27 16.5)" />
+      {/* Stinger */}
+      <path d="M13.5 28 L9.5 29 L13.5 30.5 Z" fill="#1A1A1A" />
+      {/* Body */}
+      <ellipse cx="23" cy="29" rx="10" ry="7" fill="#F4B324" stroke="#1A1A1A" strokeWidth="1.5" />
+      {/* Stripes */}
+      <path d="M20 22.5 Q 18.5 29 20 35.5" stroke="#1A1A1A" strokeWidth="2.5" fill="none" />
+      <path d="M26 22.4 Q 24.5 29 26 35.6" stroke="#1A1A1A" strokeWidth="2.5" fill="none" />
+      {/* Head */}
+      <circle cx="35" cy="28" r="4" fill="#1A1A1A" />
     </svg>
   );
 }

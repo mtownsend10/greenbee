@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { NewsletterForm } from "./NewsletterForm";
 import { Bee } from "@/components/illustrations/Bee";
 import { Honeycomb } from "@/components/illustrations/Honeycomb";
 import { Marquee } from "@/components/ui/Marquee";
@@ -9,14 +8,12 @@ const FOOTER_LINKS = {
   Shop: [
     { href: "/shop", label: "All wraps" },
     { href: "/shop/assorted-3-pack", label: "Assorted 3-Pack" },
-    { href: "/shop/garden-3-pack", label: "Garden 3-Pack" },
-    { href: "/shop/eclipse-3-pack", label: "Eclipse 3-Pack" },
+    { href: "/shop/green-garden", label: "Green Garden" },
+    { href: "/shop/hearts", label: "Hearts" },
   ],
   Help: [
     { href: "/faq", label: "FAQ" },
-    { href: "/care", label: "Care guide" },
-    { href: "/shipping", label: "Shipping" },
-    { href: "/returns", label: "Returns" },
+    { href: "/shipping", label: "Shipping & returns" },
   ],
   Company: [
     { href: "/about", label: "Our story" },
@@ -60,9 +57,6 @@ export function Footer() {
             Tiny wraps. <em className="text-honey">Big</em> impact on what
             ends up in your kitchen drawer.
           </p>
-          <div className="mt-6 inline-block">
-            <NewsletterForm />
-          </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
@@ -89,7 +83,7 @@ export function Footer() {
       </div>
 
       <div className="relative border-t border-cream/20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-body text-cream/70">
-        <p>© {new Date().getFullYear()} Green Bee Wraps Co. — Made by hand.</p>
+        <p>© {new Date().getFullYear()} Green Bee Wraps — Made by hand.</p>
         <p className="font-hand text-base text-honey">Thanks for keeping it natural ✿</p>
       </div>
 

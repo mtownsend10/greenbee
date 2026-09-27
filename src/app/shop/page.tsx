@@ -30,7 +30,7 @@ export default async function ShopPage() {
               </span>
             </h1>
             <p className="mt-6 font-body text-lg text-ink/80 max-w-xl">
-              Every 3-pack is $22 and ships free over $30. Mix patterns. Match
+              Every 3-pack is $22, or grab single wraps from $6. Everything ships anywhere in the US. Mix patterns. Match
               moods. They&apos;re all the same wraps under the hood.
             </p>
           </div>

@@ -2,19 +2,30 @@ import type { Product } from "./types";
 
 const usd = (amount: string) => ({ amount, currencyCode: "USD" as const });
 
-const baseVariant = (productId: string, available = true) => ({
-  id: `${productId}-v1`,
-  title: "Default",
-  availableForSale: available,
-  price: usd("22.00"),
-  compareAtPrice: usd("28.00"),
-  selectedOptions: [{ name: "Size", value: "3-Pack (S/M/L)" }],
-});
+const SIZES = [
+  { key: "3pack", title: "3-Pack (S/M/L)", price: "22.00" },
+  { key: "small", title: "Small", price: "6.00" },
+  { key: "medium", title: "Medium", price: "10.00" },
+  { key: "large", title: "Large", price: "13.00" },
+];
+
+const SIZE_OPTION = { id: "opt-size", name: "Size", values: SIZES.map((s) => s.title) };
+
+/** One variant per size: the 3-pack first (the default), then singles. */
+const sizeVariants = (productId: string, packCompareAt?: string) =>
+  SIZES.map((size) => ({
+    id: `${productId}-${size.key}`,
+    title: size.title,
+    availableForSale: true,
+    price: usd(size.price),
+    compareAtPrice: size.key === "3pack" && packCompareAt ? usd(packCompareAt) : null,
+    selectedOptions: [{ name: "Size", value: size.title }],
+  }));
 
 const baseHighlights = [
   "100% organic cotton",
   "Beeswax + damar resin + jojoba & coconut oil",
-  "Reusable for 12+ months",
+  "Reusable for years with simple care",
   "Fully compostable",
 ];
 
@@ -30,7 +41,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     compareAtPriceRange: {
@@ -47,8 +58,8 @@ export const MOCK_PRODUCTS: Product[] = [
       { url: "/products/photos/assorted-3.png", altText: "Assorted in use" },
       { url: "/products/photos/assorted-4.png", altText: "Assorted styling" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("assorted")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("assorted", "28.00"),
     patternColor: "#F4B324",
     patternAccent: "#5B8A3A",
     highlights: baseHighlights,
@@ -64,7 +75,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     featuredImage: {
@@ -76,8 +87,8 @@ export const MOCK_PRODUCTS: Product[] = [
       { url: "/products/photos/eclipse-2.png", altText: "Eclipse detail" },
       { url: "/products/photos/eclipse-3.png", altText: "Eclipse in use" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("eclipse")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("eclipse"),
     patternColor: "#1A1A1A",
     patternAccent: "#F4B324",
     highlights: baseHighlights,
@@ -93,7 +104,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     featuredImage: {
@@ -105,8 +116,8 @@ export const MOCK_PRODUCTS: Product[] = [
       { url: "/products/photos/garden-2.png", altText: "Garden detail" },
       { url: "/products/photos/garden-3.png", altText: "Garden in use" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("garden")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("garden"),
     patternColor: "#FF6B5B",
     patternAccent: "#5B8A3A",
     highlights: baseHighlights,
@@ -122,7 +133,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     featuredImage: {
@@ -132,8 +143,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [
       { url: "/products/photos/green-garden.png", altText: "Green Garden 3-pack" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("green-garden")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("green-garden"),
     patternColor: "#2F4A2F",
     patternAccent: "#F4B324",
     highlights: baseHighlights,
@@ -149,7 +160,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     featuredImage: {
@@ -161,8 +172,8 @@ export const MOCK_PRODUCTS: Product[] = [
       { url: "/products/photos/green-geo-2.png", altText: "Green Geo detail" },
       { url: "/products/photos/green-geo-3.png", altText: "Green Geo in use" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("green-geo")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("green-geo"),
     patternColor: "#5B8A3A",
     patternAccent: "#FFFAEB",
     highlights: baseHighlights,
@@ -178,7 +189,7 @@ export const MOCK_PRODUCTS: Product[] = [
     productType: "Beeswax Wrap",
     availableForSale: true,
     priceRange: {
-      minVariantPrice: usd("22.00"),
+      minVariantPrice: usd("6.00"),
       maxVariantPrice: usd("22.00"),
     },
     featuredImage: {
@@ -191,8 +202,8 @@ export const MOCK_PRODUCTS: Product[] = [
       { url: "/products/photos/hearts-3.png", altText: "Hearts in use" },
       { url: "/products/photos/hearts-4.png", altText: "Hearts styled" },
     ],
-    options: [{ id: "opt-size", name: "Size", values: ["3-Pack (S/M/L)"] }],
-    variants: [baseVariant("hearts")],
+    options: [SIZE_OPTION],
+    variants: sizeVariants("hearts"),
     patternColor: "#FF6B5B",
     patternAccent: "#FCD66B",
     highlights: baseHighlights,
