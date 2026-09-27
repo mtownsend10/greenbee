@@ -81,8 +81,8 @@ export function Hero() {
           {/* Hero product image */}
           <div className="absolute inset-10 rounded-3xl overflow-hidden border-2 border-ink shadow-[6px_6px_0_0_var(--ink)] bg-paper -rotate-2">
             <Image
-              src="/products/photos/garden.png"
-              alt="Garden 3-pack beeswax wraps"
+              src="/products/photos/hero-bowl.png"
+              alt="Hands pressing a Light Garden beeswax wrap over a bowl of salad"
               fill
               priority
               sizes="(max-width: 1024px) 80vw, 40vw"
@@ -110,7 +110,7 @@ export function Hero() {
             rotate={8}
             className="absolute top-2 right-0 sm:right-4 text-base !px-5 !py-2.5"
           >
-            $22 / 3-pack
+            $6–$22
           </StickerBadge>
 
           {/* Leaf sprig */}

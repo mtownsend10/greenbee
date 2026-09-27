@@ -16,10 +16,10 @@ const TILTS = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "-rotate-3", "r
 
 export function ProductCard({ product, index = 0, className }: Props) {
   const tilt = TILTS[index % TILTS.length];
-  // Lead with the 3-pack (first variant); singles are mentioned below the title.
-  const price = product.variants[0].price;
+  // Show the full price span (e.g. $6–$22) when a pattern comes as singles and a 3-pack.
+  const { minVariantPrice: minPrice, maxVariantPrice: maxPrice } = product.priceRange;
+  const isRange = parseFloat(minPrice.amount) < parseFloat(maxPrice.amount);
   const compare = product.variants[0].compareAtPrice;
-  const minPrice = product.priceRange.minVariantPrice;
   const hasSingles = product.variants.length > 1;
   const tagBadge = product.tags?.[0];
 
@@ -63,18 +63,19 @@ export function ProductCard({ product, index = 0, className }: Props) {
               {product.title}
             </p>
             <p className="font-body text-xs text-ink/60 mt-1">
-              3-pack · S / M / L
-              {hasSingles && ` · singles from ${formatPrice(minPrice.amount, minPrice.currencyCode)}`}
+              {hasSingles ? "Singles or 3-pack · S / M / L" : "3-pack · S / M / L"}
             </p>
           </div>
           <div className="text-right">
-            {compare && parseFloat(compare.amount) > parseFloat(price.amount) && (
+            {!isRange && compare && parseFloat(compare.amount) > parseFloat(maxPrice.amount) && (
               <p className="font-body text-xs text-ink/50 line-through tabular-nums">
                 {formatPrice(compare.amount, compare.currencyCode)}
               </p>
             )}
-            <p className="font-display font-bold text-xl tabular-nums">
-              {formatPrice(price.amount, price.currencyCode)}
+            <p className="font-display font-bold text-xl tabular-nums whitespace-nowrap">
+              {isRange
+                ? `${formatPrice(minPrice.amount, minPrice.currencyCode)}–${formatPrice(maxPrice.amount, maxPrice.currencyCode)}`
+                : formatPrice(maxPrice.amount, maxPrice.currencyCode)}
             </p>
           </div>
         </div>

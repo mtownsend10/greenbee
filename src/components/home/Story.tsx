@@ -17,15 +17,15 @@ export function Story() {
         {/* Image collage */}
         <div className="relative aspect-[5/6] max-w-md mx-auto w-full">
           <div className="absolute inset-0 bg-leaf border-wobble-2 border-2 border-ink shadow-[8px_8px_0_0_var(--ink)]" />
-          <div className="absolute -top-4 -left-4 size-32 bg-honey rounded-full border-2 border-ink shadow-[4px_4px_0_0_var(--ink)] flex items-center justify-center font-display font-bold text-2xl text-ink rotate-[-12deg]">
+          <div className="absolute -top-4 -left-4 z-10 size-32 bg-honey rounded-full border-2 border-ink shadow-[4px_4px_0_0_var(--ink)] flex items-center justify-center font-display font-bold text-2xl text-ink rotate-[-12deg]">
             Small
             <br />
             batch
           </div>
           <div className="absolute inset-6 rounded-3xl overflow-hidden border-2 border-ink bg-paper">
             <Image
-              src="/products/photos/green-garden.png"
-              alt="Green Garden wraps"
+              src="/products/photos/story-sandwich.png"
+              alt="Wrapping a sandwich in a Green Garden beeswax wrap"
               fill
               sizes="(max-width: 1024px) 80vw, 40vw"
               className="object-cover"
