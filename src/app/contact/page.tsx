@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Bee } from "@/components/illustrations/Bee";
 import { Underline } from "@/components/illustrations/Underline";
-import { ContactForm } from "@/components/site/ContactForm";
+import { LeafSprig } from "@/components/illustrations/LeafSprig";
+import { buttonVariants } from "@/components/ui/Button";
 import { CONTACT_EMAIL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -33,19 +34,6 @@ export default function ContactPage() {
           <dl className="mt-10 space-y-5">
             <div>
               <dt className="font-display font-bold uppercase tracking-widest text-sm text-ink/60">
-                Email
-              </dt>
-              <dd className="font-display text-2xl mt-1 break-all">
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="underline underline-offset-4 decoration-honey decoration-4 hover:text-forest"
-                >
-                  {CONTACT_EMAIL}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-display font-bold uppercase tracking-widest text-sm text-ink/60">
                 Workshop
               </dt>
               <dd className="font-display text-2xl mt-1">
@@ -66,7 +54,30 @@ export default function ContactPage() {
           <Bee size={120} className="absolute bottom-10 left-10 -rotate-12 hidden md:block" />
         </div>
 
-        <ContactForm />
+        <div className="bg-paper border-2 border-ink rounded-3xl p-8 sm:p-10 shadow-[10px_10px_0_0_var(--ink)] relative text-center">
+          <LeafSprig className="absolute -top-6 right-6 w-16 rotate-12" />
+          <p className="text-5xl mb-4" aria-hidden>🐝</p>
+          <h2 className="font-display font-black text-3xl sm:text-4xl tracking-tight">
+            Drop us an email
+          </h2>
+          <p className="mt-3 font-body text-ink/75 max-w-sm mx-auto">
+            It lands straight in our inbox, and we usually reply within a day.
+          </p>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="mt-6 block font-display text-2xl sm:text-3xl break-all underline underline-offset-4 decoration-honey decoration-4 hover:text-forest"
+          >
+            {CONTACT_EMAIL}
+          </a>
+          <div className="mt-8">
+            <a href={`mailto:${CONTACT_EMAIL}`} className={buttonVariants({ variant: "primary", size: "lg" })}>
+              Email us →
+            </a>
+          </div>
+          <p className="mt-6 text-xs font-body text-ink/55">
+            Asking about an order? Include your order number so we can help faster.
+          </p>
+        </div>
       </section>
     </div>
   );
