@@ -64,7 +64,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-14 font-body text-xl text-ink/80 max-w-2xl mx-auto leading-relaxed">
             Nicole has spent the better part of a decade making beeswax wraps and watching them
-            work — keeping food fresh, lasting for years, and quietly replacing roll after roll of
+            work — keeping food fresh, with each wrap lasting for years and quietly replacing roll after roll of
             cling film. Green Bee is everything she&apos;s learned, pressed by hand in Bend, Oregon.
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-3">

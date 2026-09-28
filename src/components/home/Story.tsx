@@ -58,7 +58,7 @@ export function Story() {
             Nicole has been making beeswax wraps for the better part of a
             decade. She&apos;s tested more blends of wax, resin, and oil than
             she can count, and she&apos;s seen first-hand how well they work in
-            real kitchens — keeping food fresh for <em>years</em>, not months.
+            real kitchens — keeping food fresh day after day, with a single wrap lasting for <em>years</em>.
           </p>
           <p className="mt-4 font-body text-lg leading-relaxed text-ink/80 max-w-xl">
             Green Bee is all of that, kept simple: every wrap pressed by hand in
