@@ -3,14 +3,19 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { Underline } from "@/components/illustrations/Underline";
 import { getAllProducts } from "@/lib/shopify/client";
 
+const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+
 export async function FeaturedProducts() {
   const products = await getAllProducts();
+  // Patterns are the products sold in sizes; mixed packs like The Assorted don't count.
+  const patternCount = products.filter((p) => p.variants.length > 1).length;
+  const patternWord = NUMBER_WORDS[patternCount] ?? String(patternCount);
   return (
     <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <p className="font-hand text-2xl text-coral mb-2">six patterns, one mission</p>
+            <p className="font-hand text-2xl text-coral mb-2">{patternWord} patterns, one mission</p>
             <h2 className="font-display font-black text-5xl sm:text-6xl tracking-tighter leading-none">
               Find your{" "}
               <span className="relative inline-block">
@@ -32,7 +37,7 @@ export async function FeaturedProducts() {
             href="/shop"
             className="font-display font-semibold text-lg underline underline-offset-4 decoration-honey decoration-4 hover:text-forest whitespace-nowrap"
           >
-            See all 6 patterns →
+            See all patterns →
           </Link>
         </header>
 

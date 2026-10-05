@@ -46,7 +46,7 @@ const PRODUCT_FIELDS = `
   priceRange { minVariantPrice { amount currencyCode } maxVariantPrice { amount currencyCode } }
   compareAtPriceRange { minVariantPrice { amount currencyCode } maxVariantPrice { amount currencyCode } }
   featuredImage { url altText width height }
-  images(first: 10) { nodes { url altText width height } }
+  images(first: 20) { nodes { url altText width height } }
   options { id name optionValues { name } }
   variants(first: 50) {
     nodes {
