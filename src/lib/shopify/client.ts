@@ -104,7 +104,7 @@ function normalize(p: ShopifyProduct): Product {
 export async function getAllProducts(): Promise<Product[]> {
   if (!isShopifyConfigured) return MOCK_PRODUCTS;
   const data = await storefrontFetch<{ products: { nodes: ShopifyProduct[] } }>(
-    `query AllProducts { products(first: 100, sortKey: CREATED_AT) { nodes { ${PRODUCT_FIELDS} } } }`,
+    `query AllProducts { products(first: 100, sortKey: CREATED_AT, reverse: true) { nodes { ${PRODUCT_FIELDS} } } }`,
   );
   return data.products.nodes.map(normalize);
 }
