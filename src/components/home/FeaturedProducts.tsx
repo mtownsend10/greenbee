@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Underline } from "@/components/illustrations/Underline";
-import { getAllProducts } from "@/lib/shopify/client";
+import { getAllProducts, isBreadBag } from "@/lib/shopify/client";
 
 const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 
 export async function FeaturedProducts() {
-  const products = await getAllProducts();
+  // Bread bags get their own section (BreadBags.tsx), so this one is wraps only.
+  const products = (await getAllProducts()).filter((p) => !isBreadBag(p));
   // Patterns are the products sold in sizes; mixed packs like The Assorted don't count.
   const patternCount = products.filter((p) => p.variants.length > 1).length;
   const patternWord = NUMBER_WORDS[patternCount] ?? String(patternCount);

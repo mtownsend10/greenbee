@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Underline } from "@/components/illustrations/Underline";
 import { Bee } from "@/components/illustrations/Bee";
-import { getAllProducts } from "@/lib/shopify/client";
+import { getAllProducts, isBreadBag } from "@/lib/shopify/client";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 
 export default async function ShopPage() {
   const products = await getAllProducts();
+  const wraps = products.filter((p) => !isBreadBag(p));
+  const breadBags = products.filter(isBreadBag);
 
   return (
     <div className="relative">
@@ -41,12 +43,30 @@ export default async function ShopPage() {
       </header>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="font-display font-black text-4xl sm:text-5xl tracking-tighter mb-10">Wraps</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14 lg:gap-y-16">
-          {products.map((p, i) => (
+          {wraps.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} />
           ))}
         </div>
       </section>
+
+      {breadBags.length > 0 && (
+        <section id="bread-bags" className="scroll-mt-24 bg-honey-light border-y-2 border-ink">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+            <p className="font-hand text-2xl text-forest mb-1">for the whole loaf</p>
+            <h2 className="font-display font-black text-4xl sm:text-5xl tracking-tighter">Bread bags</h2>
+            <p className="mt-3 mb-10 font-body text-lg text-ink/70 max-w-xl">
+              A roomy 12 × 17 in, $28 each — big enough for a sandwich loaf, so most loaves fit with room to spare.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14 lg:gap-y-16">
+              {breadBags.map((p, i) => (
+                <ProductCard key={p.id} product={p} index={i + 1} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

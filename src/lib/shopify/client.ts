@@ -101,6 +101,9 @@ function normalize(p: ShopifyProduct): Product {
   };
 }
 
+/** Bread bags are one-size, one-pattern listings; everything else is a wrap. */
+export const isBreadBag = (p: Product) => p.productType === "Bread Bag";
+
 export async function getAllProducts(): Promise<Product[]> {
   if (!isShopifyConfigured) return MOCK_PRODUCTS;
   const data = await storefrontFetch<{ products: { nodes: ShopifyProduct[] } }>(

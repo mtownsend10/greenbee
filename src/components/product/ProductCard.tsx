@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { cn, formatPrice } from "@/lib/utils";
 import { StickerBadge } from "@/components/ui/StickerBadge";
+import { isBreadBag } from "@/lib/shopify/client";
 import type { Product } from "@/lib/shopify/types";
 
 type Props = {
@@ -21,12 +22,10 @@ export function ProductCard({ product, index = 0, className }: Props) {
   const isRange = parseFloat(minPrice.amount) < parseFloat(maxPrice.amount);
   const compare = product.variants[0].compareAtPrice;
   const hasSingles = product.variants.length > 1;
-  // Size-based wraps get the S/M/L label; one-size wraps (e.g. the bread bag) list their patterns instead.
-  const sizeOption = product.options.find((o) => o.name === "Size");
-  const patternOption = product.options.find((o) => o.name === "Pattern");
-  const label = sizeOption || !patternOption
-    ? hasSingles ? "Singles or 3-pack · S / M / L" : "3-pack · S / M / L"
-    : `One size · ${patternOption.values.length} patterns`;
+  // Bread bags are one size; everything else is a wrap sold in S/M/L.
+  const label = isBreadBag(product)
+    ? "Bread bag · 12 × 17 in"
+    : hasSingles ? "Singles or 3-pack · S / M / L" : "3-pack · S / M / L";
   const tagBadge = product.tags?.[0];
 
   return (
