@@ -35,7 +35,7 @@ export async function FeaturedProducts() {
             </p>
           </div>
           <Link
-            href="/shop"
+            href="/shop/wraps"
             className="font-display font-semibold text-lg underline underline-offset-4 decoration-honey decoration-4 hover:text-forest whitespace-nowrap"
           >
             See all patterns →

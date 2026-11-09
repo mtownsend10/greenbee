@@ -6,9 +6,9 @@ import { Marquee } from "@/components/ui/Marquee";
 
 const FOOTER_LINKS = {
   Shop: [
-    { href: "/shop", label: "All wraps" },
+    { href: "/shop/wraps", label: "All wraps" },
     { href: "/shop/assorted-3-pack", label: "Assorted 3-Pack" },
-    { href: "/shop#bread-bags", label: "Bread Bags" },
+    { href: "/shop/bread-bags", label: "Bread Bags" },
     { href: "/shop/green-garden", label: "Green Garden" },
     { href: "/shop/hearts", label: "Hearts" },
   ],

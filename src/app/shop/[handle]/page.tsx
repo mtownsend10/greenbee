@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, Leaf, Recycle, Sun } from "lucide-react";
-import { getAllProducts, getProductByHandle } from "@/lib/shopify/client";
+import { getAllProducts, getProductByHandle, isBreadBag } from "@/lib/shopify/client";
 import { AddToCart } from "@/components/product/AddToCart";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ProductGallery } from "@/components/product/ProductGallery";
@@ -54,7 +54,13 @@ export default async function ProductPage({ params }: { params: Params }) {
   if (!product) notFound();
 
   const all = await getAllProducts();
-  const others = all.filter((p) => p.handle !== handle).slice(0, 3);
+  const breadBag = isBreadBag(product);
+  const category = breadBag ? { href: "/shop/bread-bags", label: "Bread bags" } : { href: "/shop/wraps", label: "Wraps" };
+  // Suggest from the same category first, then fill from the rest.
+  const others = all
+    .filter((p) => p.handle !== handle)
+    .sort((a, b) => Number(isBreadBag(b) === breadBag) - Number(isBreadBag(a) === breadBag))
+    .slice(0, 3);
 
 
   return (
@@ -66,6 +72,8 @@ export default async function ProductPage({ params }: { params: Params }) {
           <Link href="/" className="hover:text-ink">Home</Link>
           <span className="mx-2">·</span>
           <Link href="/shop" className="hover:text-ink">Shop</Link>
+          <span className="mx-2">·</span>
+          <Link href={category.href} className="hover:text-ink">{category.label}</Link>
           <span className="mx-2">·</span>
           <span className="text-ink">{product.title}</span>
         </nav>

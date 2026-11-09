@@ -10,6 +10,7 @@ import { CartDrawer } from "./CartDrawer";
 
 const NAV = [
   { href: "/shop", label: "Shop" },
+  { href: "/shop/bread-bags", label: "Bread Bags" },
   { href: "/about", label: "Our Story" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
