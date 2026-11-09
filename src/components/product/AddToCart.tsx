@@ -30,7 +30,7 @@ export function AddToCart({ product }: { product: Product }) {
       {product.variants.length > 1 && (
         <fieldset className="mt-6">
           <legend className="font-display font-bold text-sm uppercase tracking-widest text-ink/70 mb-3">
-            Size
+            {product.options[0]?.name ?? "Size"}
           </legend>
           <div className="flex flex-wrap gap-2">
             {product.variants.map((v) => (

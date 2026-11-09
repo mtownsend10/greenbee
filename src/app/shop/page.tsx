@@ -6,7 +6,7 @@ import { getAllProducts } from "@/lib/shopify/client";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "All six handmade beeswax wrap patterns — every 3-pack $22.",
+  description: "Every handmade beeswax wrap pattern — $22 3-packs, singles from $6, and loaf-sized bread bags.",
 };
 
 export default async function ShopPage() {
@@ -30,7 +30,7 @@ export default async function ShopPage() {
               </span>
             </h1>
             <p className="mt-6 font-body text-lg text-ink/80 max-w-xl">
-              Every 3-pack is $22, or grab single wraps from $6. Everything ships anywhere in the US. Mix patterns. Match
+              Every 3-pack is $22, or grab single wraps from $6 and a 12 × 17&quot; bread bag for your loaf. Everything ships anywhere in the US. Mix patterns. Match
               moods. They&apos;re all the same wraps under the hood.
             </p>
           </div>

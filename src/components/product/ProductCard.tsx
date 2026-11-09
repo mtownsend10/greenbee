@@ -21,6 +21,12 @@ export function ProductCard({ product, index = 0, className }: Props) {
   const isRange = parseFloat(minPrice.amount) < parseFloat(maxPrice.amount);
   const compare = product.variants[0].compareAtPrice;
   const hasSingles = product.variants.length > 1;
+  // Size-based wraps get the S/M/L label; one-size wraps (e.g. the bread bag) list their patterns instead.
+  const sizeOption = product.options.find((o) => o.name === "Size");
+  const patternOption = product.options.find((o) => o.name === "Pattern");
+  const label = sizeOption || !patternOption
+    ? hasSingles ? "Singles or 3-pack · S / M / L" : "3-pack · S / M / L"
+    : `One size · ${patternOption.values.length} patterns`;
   const tagBadge = product.tags?.[0];
 
   return (
@@ -63,7 +69,7 @@ export function ProductCard({ product, index = 0, className }: Props) {
               {product.title}
             </p>
             <p className="font-body text-xs text-ink/60 mt-1">
-              {hasSingles ? "Singles or 3-pack · S / M / L" : "3-pack · S / M / L"}
+              {label}
             </p>
           </div>
           <div className="text-right">
