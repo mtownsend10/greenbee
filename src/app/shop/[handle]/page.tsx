@@ -71,8 +71,6 @@ export default async function ProductPage({ params }: { params: Params }) {
         <nav className="font-body text-sm text-ink/60 mb-8" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-ink">Home</Link>
           <span className="mx-2">·</span>
-          <Link href="/shop" className="hover:text-ink">Shop</Link>
-          <span className="mx-2">·</span>
           <Link href={category.href} className="hover:text-ink">{category.label}</Link>
           <span className="mx-2">·</span>
           <span className="text-ink">{product.title}</span>
@@ -179,7 +177,7 @@ export default async function ProductPage({ params }: { params: Params }) {
               <span className="font-hand text-honey-dark text-3xl">try one of these</span>
             </h2>
             <Link
-              href="/shop"
+              href={category.href}
               className="font-display font-semibold underline underline-offset-4 decoration-honey decoration-4 whitespace-nowrap"
             >
               See all →

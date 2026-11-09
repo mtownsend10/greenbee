@@ -9,8 +9,8 @@ import { CartButton } from "./CartButton";
 import { CartDrawer } from "./CartDrawer";
 
 const NAV = [
-  { href: "/shop", label: "Shop" },
-  { href: "/shop/bread-bags", label: "Bread Bags" },
+  { href: "/shop/wraps", label: "Shop Wraps" },
+  { href: "/shop/bread-bags", label: "Shop Bread Bags" },
   { href: "/about", label: "Our Story" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },

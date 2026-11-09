@@ -198,7 +198,7 @@ export default function AboutPage() {
 
         <div className="mt-16 flex justify-center">
           <Link
-            href="/shop"
+            href="/shop/wraps"
             className={buttonVariants({ variant: "primary", size: "xl" })}
           >
             Browse the wraps →

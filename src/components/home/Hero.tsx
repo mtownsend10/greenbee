@@ -44,7 +44,7 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              href="/shop"
+              href="/shop/wraps"
               className={buttonVariants({ variant: "primary", size: "lg" })}
             >
               Shop the wraps

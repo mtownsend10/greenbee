@@ -1,27 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Underline } from "@/components/illustrations/Underline";
 import { Bee } from "@/components/illustrations/Bee";
+import { StickerBadge } from "@/components/ui/StickerBadge";
 import { getAllProducts, isBreadBag } from "@/lib/shopify/client";
 import type { Product } from "@/lib/shopify/types";
 import { cn } from "@/lib/utils";
 
-export type ShopCategory = "all" | "wraps" | "bread-bags";
+export type ShopCategory = "wraps" | "bread-bags";
 
 const CATEGORIES: Record<
   ShopCategory,
   { href: string; tab: string; kicker: string; lead: string; accent: string; tail: string; blurb: string }
 > = {
-  all: {
-    href: "/shop",
-    tab: "All",
-    kicker: "the whole bunch",
-    lead: "Shop every",
-    accent: "pattern",
-    tail: "we make.",
-    blurb:
-      "Every 3-pack is $22, or grab single wraps from $6 and a 12 × 17\" bread bag for your loaf. Everything ships anywhere in the US. Mix patterns. Match moods.",
-  },
   wraps: {
     href: "/shop/wraps",
     tab: "Wraps",
@@ -60,7 +52,7 @@ export async function ShopCatalog({ category }: { category: ShopCategory }) {
   const products = await getAllProducts();
   const wraps = products.filter((p) => !isBreadBag(p));
   const breadBags = products.filter(isBreadBag);
-  const counts: Record<ShopCategory, number> = { all: products.length, wraps: wraps.length, "bread-bags": breadBags.length };
+  const counts: Record<ShopCategory, number> = { wraps: wraps.length, "bread-bags": breadBags.length };
   const copy = CATEGORIES[category];
 
   return (
@@ -79,9 +71,13 @@ export async function ShopCatalog({ category }: { category: ShopCategory }) {
             </h1>
             <p className="mt-6 font-body text-lg text-ink/80 max-w-xl">{copy.blurb}</p>
           </div>
-          <div className="self-center justify-self-end hidden md:block">
-            <Bee size={180} className="text-ink rotate-[-10deg]" />
-          </div>
+          {category === "bread-bags" ? (
+            <BreadBagCollage />
+          ) : (
+            <div className="self-center justify-self-end hidden md:block">
+              <Bee size={180} className="text-ink rotate-[-10deg]" />
+            </div>
+          )}
         </div>
       </header>
 
@@ -102,46 +98,43 @@ export async function ShopCatalog({ category }: { category: ShopCategory }) {
         ))}
       </nav>
 
-      {category === "all" ? (
-        <>
-          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-            <div className="flex items-end justify-between gap-6 mb-10">
-              <h2 className="font-display font-black text-4xl sm:text-5xl tracking-tighter">Wraps</h2>
-              <Link
-                href="/shop/wraps"
-                className="font-display font-semibold underline underline-offset-4 decoration-honey decoration-4 hover:text-forest whitespace-nowrap"
-              >
-                Just wraps →
-              </Link>
-            </div>
-            <Grid products={wraps} />
-          </section>
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <Grid products={category === "wraps" ? wraps : breadBags} />
+      </section>
+    </div>
+  );
+}
 
-          {breadBags.length > 0 && (
-            <section id="bread-bags" className="scroll-mt-24 bg-honey-light border-y-2 border-ink">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-                <div className="flex items-end justify-between gap-6 mb-10">
-                  <div>
-                    <p className="font-hand text-2xl text-forest mb-1">for the whole loaf</p>
-                    <h2 className="font-display font-black text-4xl sm:text-5xl tracking-tighter">Bread bags</h2>
-                  </div>
-                  <Link
-                    href="/shop/bread-bags"
-                    className="font-display font-semibold underline underline-offset-4 decoration-honey-dark decoration-4 hover:text-forest whitespace-nowrap"
-                  >
-                    Just bread bags →
-                  </Link>
-                </div>
-                <Grid products={breadBags} offset={1} />
-              </div>
-            </section>
-          )}
-        </>
-      ) : (
-        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <Grid products={category === "wraps" ? wraps : breadBags} />
-        </section>
-      )}
+/** Bread bag in use, with the packaged bag tucked in front and the bee buzzing past. */
+function BreadBagCollage() {
+  return (
+    <div className="relative mx-auto lg:mx-0 lg:justify-self-end w-full max-w-xs sm:max-w-sm mt-6 lg:mt-0">
+      <div className="relative aspect-[4/5]">
+        <div className="absolute inset-0 bg-coral border-wobble-2 border-2 border-ink shadow-[8px_8px_0_0_var(--ink)] rotate-3" />
+        <div className="absolute inset-4 rounded-3xl overflow-hidden border-2 border-ink bg-paper -rotate-2">
+          <Image
+            src="/products/photos/bread-bag-in-use.jpg"
+            alt="A sourdough loaf tucked inside a Cosmic Skyway beeswax bread bag"
+            fill
+            priority
+            sizes="(max-width: 1024px) 80vw, 24rem"
+            className="object-cover"
+          />
+        </div>
+      </div>
+      <div className="absolute -bottom-8 -left-6 sm:-left-10 w-28 sm:w-32 aspect-[3/4] rounded-2xl overflow-hidden border-2 border-ink bg-paper shadow-[4px_4px_0_0_var(--ink)] rotate-[-8deg]">
+        <Image
+          src="/products/photos/bread-bag-packaged.jpg"
+          alt="A Sky Parade beeswax bread bag in its paper label"
+          fill
+          sizes="8rem"
+          className="object-cover"
+        />
+      </div>
+      <StickerBadge tone="honey" rotate={8} className="absolute -top-4 -right-2 !px-4 !py-2">
+        Fits the whole loaf!
+      </StickerBadge>
+      <Bee size={84} className="absolute -top-10 -left-8 text-ink rotate-[-14deg] animate-float hidden sm:block" />
     </div>
   );
 }

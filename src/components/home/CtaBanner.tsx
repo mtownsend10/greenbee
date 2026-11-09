@@ -29,7 +29,7 @@ export function CtaBanner() {
           </div>
           <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
             <Link
-              href="/shop"
+              href="/shop/wraps"
               className={buttonVariants({ variant: "honey", size: "xl" })}
             >
               Shop the wraps →

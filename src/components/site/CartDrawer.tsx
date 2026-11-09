@@ -70,7 +70,7 @@ export function CartDrawer() {
                 Pick a wrap pattern (or three) to get started.
               </p>
               <Link
-                href="/shop"
+                href="/shop/wraps"
                 onClick={close}
                 className={buttonVariants({ variant: "honey", size: "md" })}
               >
